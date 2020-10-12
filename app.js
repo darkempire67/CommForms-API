@@ -12,19 +12,6 @@ app.use("/commforms", commFormsRoute);
 
 app.use("/", (req, res) => {
   res.send("we are home.");
-
-  const origin = req.get("origin");
-
-  res.header("Access-Control-Allow-Origin", "*");
-
-  res.header("Access-Control-Allow-Methods", "GET, PUT, POST, DELETE");
-
-  res.header("Access-Control-Allow-Methods", true);
-
-  res.header(
-    "Access-Control-Allow-Headers",
-    "Origin, X-Requested-With, Content-Type, Accept, Authorization, Cache-Control, Pragma, x-auth"
-  );
 });
 // connect to DB
 
