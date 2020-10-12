@@ -3,9 +3,9 @@ const app = express();
 const mongoose = require("mongoose");
 require("dotenv/config");
 const bodyParser = require("body-parser");
-
+const cors = require("cors");
 app.use(bodyParser.json());
-
+app.use(cors());
 //import routes
 const commFormsRoute = require("./routes/commforms");
 app.use("/commforms", commFormsRoute);
