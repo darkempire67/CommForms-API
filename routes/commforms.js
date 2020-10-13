@@ -4,8 +4,13 @@ const CommForm = require("../models/CommForm");
 
 // routes
 
-router.get("/", (req, res) => {
-  res.send("we are CommissionForm");
+router.get("/", async (req, res) => {
+  try {
+    const commForm = await CommForm.find();
+    res.json(commForm);
+  } catch (err) {
+    res.json({ message: err });
+  }
 });
 
 router.post("/", async (req, res) => {
