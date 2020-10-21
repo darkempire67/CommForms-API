@@ -3,7 +3,7 @@ const router = express.Router();
 const CommForm = require("../models/CommForm");
 
 // routes
-
+// get  all forms
 router.get("/", async (req, res) => {
   try {
     const commForm = await CommForm.find();
@@ -12,7 +12,17 @@ router.get("/", async (req, res) => {
     res.json({ message: err });
   }
 });
+// get Specific CommForm
+router.get("/:id", async (req, res) => {
+  try {
+    const commForm = await CommForm.findById(req.params.id);
+    res.json(commForm);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
 
+// submit a commForm
 router.post("/", async (req, res) => {
   const commForm = new CommForm({
     firstName: req.body.firstName,
