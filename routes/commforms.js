@@ -3,7 +3,7 @@ const router = express.Router();
 const CommForm = require("../models/CommForm");
 
 // routes
-// get  all forms
+
 router.get("/", async (req, res) => {
   try {
     const commForm = await CommForm.find();
@@ -12,17 +12,7 @@ router.get("/", async (req, res) => {
     res.json({ message: err });
   }
 });
-// get Specific CommForm
-router.get("/:id", async (req, res) => {
-  try {
-    const commForm = await CommForm.findById(req.params.id);
-    res.json(commForm);
-  } catch (err) {
-    res.json({ message: err });
-  }
-});
 
-// submit a commForm
 router.post("/", async (req, res) => {
   const commForm = new CommForm({
     firstName: req.body.firstName,
@@ -57,7 +47,6 @@ router.post("/", async (req, res) => {
     percent: req.body.percent,
     paymentTypeWired: req.body.paymentTypeWired,
     paymentAmount: req.body.paymentAmount,
-
     // LO2
     loanOfficer2: req.body.loanOfficer2,
     flatFeeOrPercent2: req.body.flatFeeOrPercent2,
@@ -67,16 +56,13 @@ router.post("/", async (req, res) => {
     paymentTypeWired2: req.body.paymentTypeWired2,
     paymentAmount2: req.body.paymentAmount2,
     twoLOs: req.body.twoLOs,
-
     // second payment temp var---> this is to not lose the original value of
     //paymentAmount when calculating different scenarios.
-
     //user phone number
     phoneNumber: req.body.phoneNumber,
   });
   try {
     const savedCommForm = await commForm.save();
-
     res.json(savedCommForm);
   } catch (err) {
     res.json({ message: "something went wrong" });
