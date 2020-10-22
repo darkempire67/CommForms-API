@@ -2,7 +2,7 @@ const express = require("express");
 const router = express.Router();
 const CommForm = require("../models/CommForm");
 
-// routes
+// routes get all
 
 router.get("/", async (req, res) => {
   try {
