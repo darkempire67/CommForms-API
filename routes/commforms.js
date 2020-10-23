@@ -34,7 +34,7 @@ router.get("/:id", async (req, res) => {
 router.patch("/:id", async (req, res) => {
   try {
     const updated_commForm = await CommForm.updateOne(
-      { _id: eq.params.id },
+      { _id: req.params.id },
       {
         $set: { verified: req.body.verified },
       }
