@@ -50,5 +50,6 @@ const CommFormSchema = mongoose.Schema({
   //user phone number
   phoneNumber: String,
   dateCreated: { type: Date, default: Date.now },
+  verified: { type: Boolean, default: false },
 });
 module.exports = mongoose.model("CommForm", CommFormSchema);

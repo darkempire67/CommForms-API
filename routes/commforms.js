@@ -12,6 +12,15 @@ router.get("/", async (req, res) => {
     res.json({ message: err });
   }
 });
+//delete
+router.delete("/:id", async (req, res) => {
+  try {
+    const removedForm = await commForm.remove({ _id: req.params.id });
+    res.json(removedForm);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
 // get Specific CommForm
 router.get("/:id", async (req, res) => {
   try {
@@ -21,7 +30,20 @@ router.get("/:id", async (req, res) => {
     res.json({ message: err });
   }
 });
-
+// update post
+router.patch("/:id", async (req, res) => {
+  try {
+    const updated_commForm = await CommForm.updateOne(
+      { _id: eq.params.id },
+      {
+        $set: { verified: req.body.verified },
+      }
+    );
+    res.json(updated_commForm);
+  } catch (err) {
+    res.json({ message: err });
+  }
+});
 // submit a commForm
 router.post("/", async (req, res) => {
   const commForm = new CommForm({
