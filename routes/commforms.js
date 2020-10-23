@@ -15,7 +15,7 @@ router.get("/", async (req, res) => {
 //delete
 router.delete("/:id", async (req, res) => {
   try {
-    const removedForm = await commForm.remove({ _id: req.params.id });
+    const removedForm = await CommForm.remove({ _id: req.params.id });
     res.json(removedForm);
   } catch (err) {
     res.json({ message: err });
