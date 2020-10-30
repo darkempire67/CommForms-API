@@ -6,8 +6,8 @@ const CommFormSchema = mongoose.Schema({
   email: String,
   companyBranch: String,
   //step 2
-  loanNumber: Number,
-  escrowNumber: Number,
+  loanNumber: String,
+  escrowNumber: String,
   loanAmount: Number,
   fundedDate: Date,
   processor: String,
