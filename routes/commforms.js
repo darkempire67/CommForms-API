@@ -97,7 +97,7 @@ router.post("/", async (req, res) => {
     const savedCommForm = await commForm.save();
     res.json(savedCommForm);
   } catch (err) {
-    res.json({ message: "something went wrong" });
+    res.json({ message: "something went wrong", err });
   }
 });
 module.exports = router;
